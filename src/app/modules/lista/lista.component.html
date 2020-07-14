@@ -1,0 +1,39 @@
+ 
+<erro-request  *ngIf="!load && lista.length <= 0" (click)="listar()">
+    <h1>
+        <i class="fa fa-bug mr-2"></i> Erro inesperado
+    </h1> <br>
+    <p>Pagina não carregou, possiveis causas: <br>
+        <br><small>* Sem conexão com internet</small> <br>
+        <small>* Webservice indisponivel</small><br>
+        <small>* Webservice não retornou dados</small><br><br>
+   
+ 
+   
+        <button class="btn btn-primary">Recarregar</button>
+    
+    </p>
+</erro-request> 
+
+<div >
+    <div *ngIf="load" class="alert alert-info">
+        Carregando...
+    </div>
+    <table  *ngIf="!load && lista.length > 0" class="table">
+        <thead>
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Linha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of lista">
+                <td>{{ l.codigo }}</td>
+                <td ><span class="break-word">{{ l.nome }}</span></td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
+
+

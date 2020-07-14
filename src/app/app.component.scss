@@ -1,0 +1,88 @@
+@import "./core/styles/variables.scss";
+
+
+button{
+    border: 0px;
+    outline: none;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+nav {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, $primary, $secondary);
+    color: #fff;
+    transition: all 0.5s;
+    .flex{
+        padding: 0px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100%;
+    }
+    ul,li{
+        display: block;
+        text-align: right;
+        color: #fff;
+        margin: 0px;
+        padding: 0px;
+        transition: all 0.3s;
+    }
+    li{
+        padding: 10px 15px;
+        margin: 5px 0px;
+        cursor: pointer;
+        outline: none;
+        border: 0px;
+        border-radius: 5px;
+    }
+    li.active, li:hover{
+        background: rgba(255, 255, 255, 0.6);;
+    }
+}
+
+
+nav.active {
+    margin-left: -200px;
+    span{
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    i{
+        font-size: 20px;
+        transition: all 0.3s;
+    }
+    ul{
+       width: calc(100%);
+        transition: all 1s;
+    }
+    
+}
+
+#content {
+    position: absolute;
+    right: 0px;
+    padding: 20px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    background-color: #eee;
+    transition: all 0.5s;
+}
+
+
+#content.active {
+    width: calc(100% - 50px);
+    
+}
+
+.primary{
+    background: linear-gradient(45deg, $primary, $secondary);
+    margin-bottom: 20px;
+    color: #fff;
+}

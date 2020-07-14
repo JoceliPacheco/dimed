@@ -1,0 +1,20 @@
+<nav [ngClass]="(menu==true)?'active':''" >
+  <div class="flex">
+    <ul>
+      <li routerLink="/lista/onibus" routerLinkActive="active">
+        <span>Onibus</span>  <i class="ml-1 fa fa-bus"></i>
+      </li>
+      <li routerLink="/lista/lotacao" routerLinkActive="active">
+        <span>Lotações</span>  <i class="ml-1 fa fa-road"></i>
+      </li>
+      <li routerLink="/intinerario" routerLinkActive="active">
+        <span>Intinerarios</span>  <i class="ml-1 fa fa-map"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div id="content"  [ngClass]="(menu==true)?'active':''">
+  <button class="primary"     (click)="menu=!menu" ><i class="fa" [ngClass]="(menu==true)?'fa-bars':'fa-times'" ></i></button>
+  <router-outlet></router-outlet>
+</div>

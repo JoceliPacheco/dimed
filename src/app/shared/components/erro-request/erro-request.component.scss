@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    width: 100%;
+    color: #666;
+}
+.row{
+    max-width: 600px;
+}
+h1,p, small{
+    display: block;
+    width: 100%;
+    text-align: left;;
+     
+}
+a{
+    color: #fff;
+}
+ 
