@@ -18,8 +18,6 @@ export class RequestsService {
     private http: HttpClient
   ) { }
 
- 
-
   public get(point) {
 
     return this.http.get(point, { observe: 'response', responseType: 'json' }) 
@@ -30,10 +28,7 @@ export class RequestsService {
 
     }))
     .pipe(map((res) => {
-
-    
       return res.body as Object;
-
     }))
     .toPromise();
 

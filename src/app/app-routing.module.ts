@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
+//CArregamento Lazy load para escalabidade futura
 const routes: Routes = [
   {path: '', redirectTo: '/lista/onibus', pathMatch: 'full' },
   { path: 'lista/lotacao',  loadChildren: () => import('./modules/lista/lista.module').then(m => m.ListaModule) }, 

@@ -10,12 +10,14 @@ import { Lista } from './lista.interface';
   styleUrls: ['./lista.component.scss']
 })
 export class ListaComponent implements OnInit {
+
   public p: number = 1;
   public lista: Lista[]  = []; 
-  public load = true;
-  public search = '';
-  public coluna = 'nome';
-  public dir = false;
+  public load: boolean = true;
+  public search: string = '';
+  public coluna: string = 'nome';
+  public dir: boolean = false;
+
   constructor(
     private api: RequestsService,
     private route: Router 
@@ -23,14 +25,10 @@ export class ListaComponent implements OnInit {
  
 
   ngOnInit(): void {
- 
     this.listar();
   }
   
-  clicou(e){
-    console.log(e);
-  }
- 
+  
   listar(){
     //Define se a pagina deve lista/. Lotações ou Onibus
     const tipo = this.route.url=='/lista/lotacao' ? 'l': 'o';

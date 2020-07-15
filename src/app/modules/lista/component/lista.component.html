@@ -1,4 +1,3 @@
- 
 <erro-request  *ngIf="!load && lista.length <= 0" title=" Erro inesperado">
     <p>Pagina não carregou, possiveis causas: <br>
         <br><small>* Sem conexão com internet</small> <br>
@@ -7,7 +6,6 @@
         <button  (click)="listar()" class="btn btn-primary">Recarregar</button>
     </p>
 </erro-request> 
-
 
 <div class="input-group flex-nowrap" *ngIf="!load && lista.length > 0">
     <div class="input-group-prepend">
@@ -20,7 +18,6 @@
         (search)="search = $event.target.value; " >
 </div>
 
-  
 <erro-request  *ngIf="!load && (lista  | filter:search).length <= 0 && lista.length > 0" title=" Nenhum resultado">
     <p>Não localizamos resultado: <br>
         <br><small>* Limpe sua busca e tente novamente</small><br><br>
@@ -57,14 +54,14 @@
                 </td>
             </tr>
         </tbody>
-
     </table>
   
-        <pagination-controls style="width: 100%; text-align: center;"
-            (pageChange)="p = $event"
-            responsive="true"
-            previousLabel="Anterior"
-            nextLabel="Próximo"></pagination-controls>
+    <pagination-controls style="width: 100%; text-align: center;"
+        (pageChange)="p = $event"
+        responsive="true"
+        previousLabel="Anterior"
+        nextLabel="Próximo">
+    </pagination-controls>
   
 </div>
 
