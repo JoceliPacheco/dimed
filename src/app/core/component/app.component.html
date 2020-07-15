@@ -1,10 +1,10 @@
 <nav [ngClass]="(menu==true)?'active':''" >
   <div class="flex">
     <ul>
-      <li routerLink="/lista/onibus" routerLinkActive="active">
+      <li routerLink="/lista/onibus" (click)="menu= true" routerLinkActive="active">
         <span>Onibus</span>  <i class="ml-1 fa fa-bus"></i>
       </li>
-      <li routerLink="/lista/lotacao" routerLinkActive="active">
+      <li routerLink="/lista/lotacao"  (click)="menu= true" routerLinkActive="active">
         <span>Lotações</span>  <i class="ml-1 fa fa-road"></i>
       </li>
    

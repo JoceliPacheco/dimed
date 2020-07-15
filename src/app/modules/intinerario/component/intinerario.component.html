@@ -2,9 +2,9 @@
   Carregando...
 </div>
 
-<a *ngIf="!load && markers.length > 0" class=" ml-3" style="cursor: pointer;" (click)="gps()"> 
+<button type="button" class="btn btn-light ml-3" *ngIf="!load && markers.length > 0"   aria-hidden="true" style="cursor: pointer; font-size: 12px;" (click)="gps()"> 
   <i class="fa fa-crosshairs mr-2"></i>Minha localização
-</a>
+</button>
 
 <google-map 
   *ngIf="!load && markers.length > 0" 
@@ -23,7 +23,9 @@
   </map-marker> 
 
 </google-map>
+
 <div id="label" *ngIf="!load && markers.length > 0"  class="mt-2"><i class="mr-1 fa fa-bus"></i> {{ linha }}</div>
+
 <erro-request  *ngIf="!load && markers.length <= 0" title=" Erro inesperado" (click)="listar()">
   <p>Pagina não carregou, possiveis causas: <br>
       <br><small>* Sem conexão com internet</small> <br>

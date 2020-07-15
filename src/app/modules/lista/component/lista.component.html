@@ -1,11 +1,10 @@
  
-<erro-request  *ngIf="!load && lista.length <= 0" title=" Erro inesperado" (click)="listar()">
- 
+<erro-request  *ngIf="!load && lista.length <= 0" title=" Erro inesperado">
     <p>Pagina não carregou, possiveis causas: <br>
         <br><small>* Sem conexão com internet</small> <br>
         <small>* Webservice indisponivel</small><br>
         <small>* Webservice não retornou dados</small><br><br>
-        <button class="btn btn-primary">Recarregar</button>
+        <button  (click)="listar()" class="btn btn-primary">Recarregar</button>
     </p>
 </erro-request> 
 
@@ -18,16 +17,14 @@
     </div>
     <input type="search" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="addon-wrapping"
         (keyup)="search = $event.target.value; p=1; "
-        (search)="search =  '';"
-          >
-  </div>
+        (search)="search = $event.target.value; " >
+</div>
 
   
-<erro-request  *ngIf="!load && (lista  | filter:search).length <= 0 && lista.length > 0" title=" Nenhum resultado" (click)="search = ''; p=1;">
- 
+<erro-request  *ngIf="!load && (lista  | filter:search).length <= 0 && lista.length > 0" title=" Nenhum resultado">
     <p>Não localizamos resultado: <br>
         <br><small>* Limpe sua busca e tente novamente</small><br><br>
-        <button  class="btn btn-primary">Resetar</button>
+        <button  (click)="search = ''; p=1;" class="btn btn-primary">Resetar</button>
     </p>
 </erro-request> 
 
@@ -36,11 +33,10 @@
 </div>
 
 <div *ngIf="!load && (lista  | filter:search).length > 0">
-   
     <table   class="table">
         <thead>
             <tr>
-                <th style="width: 100px;" (click)="coluna = 'codigo'; dir = !dir; p=1;" scope="col">
+                <th style="width: 80px;" (click)="coluna = 'codigo'; dir = !dir; p=1;" scope="col">
                     Codigo
                     <i [hidden]="coluna!='codigo'" class="fa " [ngClass]="(dir==true)?'fa-arrow-up':'fa-arrow-down'"   > </i>
                 </th>
