@@ -1,4 +1,4 @@
-@import "./core/styles/variables.scss";
+@import "../styles/variables.scss";
 
 
 button{
@@ -17,6 +17,7 @@ nav {
     height: 100vh;
     background: linear-gradient(to bottom, $primary, $secondary);
     color: #fff;
+    font-size: 16px;
     transition: all 0.5s;
     .flex{
         padding: 0px;
@@ -41,9 +42,11 @@ nav {
         outline: none;
         border: 0px;
         border-radius: 5px;
+        min-width: 150px;
     }
     li.active, li:hover{
         background: rgba(255, 255, 255, 0.6);;
+        box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.2);
     }
 }
 

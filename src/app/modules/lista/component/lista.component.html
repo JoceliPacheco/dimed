@@ -1,0 +1,75 @@
+ 
+<erro-request  *ngIf="!load && lista.length <= 0" title=" Erro inesperado" (click)="listar()">
+ 
+    <p>Pagina não carregou, possiveis causas: <br>
+        <br><small>* Sem conexão com internet</small> <br>
+        <small>* Webservice indisponivel</small><br>
+        <small>* Webservice não retornou dados</small><br><br>
+        <button class="btn btn-primary">Recarregar</button>
+    </p>
+</erro-request> 
+
+
+<div class="input-group flex-nowrap" *ngIf="!load && lista.length > 0">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="addon-wrapping">
+          <i class="fa fa-search"></i>
+      </span>
+    </div>
+    <input type="search" class="form-control" placeholder="Buscar..." aria-label="Username" aria-describedby="addon-wrapping"
+        (keyup)="search = $event.target.value; p=1; "
+        (search)="search =  '';"
+          >
+  </div>
+
+  
+<erro-request  *ngIf="!load && (lista  | filter:search).length <= 0 && lista.length > 0" title=" Nenhum resultado" (click)="search = ''; p=1;">
+ 
+    <p>Não localizamos resultado: <br>
+        <br><small>* Limpe sua busca e tente novamente</small><br><br>
+        <button  class="btn btn-primary">Resetar</button>
+    </p>
+</erro-request> 
+
+<div *ngIf="load" class="alert alert-info">
+    Carregando...
+</div>
+
+<div *ngIf="!load && (lista  | filter:search).length > 0">
+   
+    <table   class="table">
+        <thead>
+            <tr>
+                <th style="width: 100px;" (click)="coluna = 'codigo'; dir = !dir; p=1;" scope="col">
+                    Codigo
+                    <i [hidden]="coluna!='codigo'" class="fa " [ngClass]="(dir==true)?'fa-arrow-up':'fa-arrow-down'"   > </i>
+                </th>
+                <th  (click)="coluna = 'nome'; dir = !dir; p=1;" scope="col">
+                    Linha 
+                    <i [hidden]="coluna!='nome'" class="fa " [ngClass]="(dir==true)?'fa-arrow-up':'fa-arrow-down'"   > </i>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of lista | orderBy:coluna:dir  | filter:search | paginate: { itemsPerPage: 10, currentPage: p }">
+                <td>{{ l.codigo }}</td>
+                <td >
+                    <span class="break-word">{{ l.nome }}</span> <br>
+                    <a  [routerLink]="['/intinerario',l.id]"   > 
+                        <i class="fa fa-map-signs"></i> Rota
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+  
+        <pagination-controls style="width: 100%; text-align: center;"
+            (pageChange)="p = $event"
+            responsive="true"
+            previousLabel="Anterior"
+            nextLabel="Próximo"></pagination-controls>
+  
+</div>
+
+

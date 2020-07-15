@@ -1,5 +1,5 @@
 import { Component, OnInit, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
-import { RequestsService } from '../../core/services/requests.service';
+import { RequestsService } from '../services/lista.service';
 import { Router  } from '@angular/router';
 import { Lista } from './lista.interface';
  
@@ -10,9 +10,12 @@ import { Lista } from './lista.interface';
   styleUrls: ['./lista.component.scss']
 })
 export class ListaComponent implements OnInit {
-
+  public p: number = 1;
   public lista: Lista[]  = []; 
   public load = true;
+  public search = '';
+  public coluna = 'nome';
+  public dir = false;
   constructor(
     private api: RequestsService,
     private route: Router 
@@ -24,6 +27,9 @@ export class ListaComponent implements OnInit {
     this.listar();
   }
   
+  clicou(e){
+    console.log(e);
+  }
  
   listar(){
     //Define se a pagina deve lista/. Lotações ou Onibus
@@ -36,5 +42,7 @@ export class ListaComponent implements OnInit {
     })
     .finally(() =>  this.load = false)
   }
+
+  
 
 }

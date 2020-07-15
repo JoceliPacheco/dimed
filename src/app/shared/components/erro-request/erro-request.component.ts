@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'erro-request',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./erro-request.component.scss']
 })
 export class ErroRequestComponent   {
-
+  @Input('title') title: string = '';
   constructor() { }
 
   ngOnInit(): void {

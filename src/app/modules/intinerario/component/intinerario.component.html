@@ -1,0 +1,34 @@
+<div *ngIf="load" class="alert alert-info">
+  Carregando...
+</div>
+
+<a *ngIf="!load && markers.length > 0" class=" ml-3" style="cursor: pointer;" (click)="gps()"> 
+  <i class="fa fa-crosshairs mr-2"></i>Minha localização
+</a>
+
+<google-map 
+  *ngIf="!load && markers.length > 0" 
+  height="90vh"
+  width="100%"
+  [center]="center"
+  [zoom]='16'>
+
+  <map-marker
+    #markerElem
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    [options]="marker.options">
+  </map-marker> 
+
+</google-map>
+<div id="label" *ngIf="!load && markers.length > 0"  class="mt-2"><i class="mr-1 fa fa-bus"></i> {{ linha }}</div>
+<erro-request  *ngIf="!load && markers.length <= 0" title=" Erro inesperado" (click)="listar()">
+  <p>Pagina não carregou, possiveis causas: <br>
+      <br><small>* Sem conexão com internet</small> <br>
+      <small>* Webservice indisponivel</small><br>
+      <small>* Webservice não retornou dados</small><br><br>
+      <button class="btn btn-primary">Recarregar</button>
+  </p>
+</erro-request> 
