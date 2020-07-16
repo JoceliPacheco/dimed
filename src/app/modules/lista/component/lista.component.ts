@@ -1,6 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges, AfterContentInit } from '@angular/core';
 import { RequestsService } from '../services/lista.service';
-import { Router  } from '@angular/router';
+import { ActivatedRoute  } from '@angular/router';
 import { Lista } from './lista.interface';
  
 
@@ -17,21 +17,27 @@ export class ListaComponent implements OnInit {
   public search: string = '';
   public coluna: string = 'nome';
   public dir: boolean = false;
-
+  public tipo:string = 'onibus';
   constructor(
     private api: RequestsService,
-    private route: Router 
+    private route: ActivatedRoute 
   ) {  }
  
 
   ngOnInit(): void {
-    this.listar();
+    this.route.params.subscribe(data => {
+      this.search = '';
+      this.lista = [];
+      this.tipo = data.tipo;
+      this.listar();
+    })
+    
   }
   
   
   listar(){
     //Define se a pagina deve lista/. Lotações ou Onibus
-    const tipo = this.route.url=='/lista/lotacao' ? 'l': 'o';
+    const tipo =  this.tipo=='lotacao' ? 'l': 'o';
     
     this.load = true;
     this.api.get(`http://www.poatransporte.com.br/php/facades/process.php?a=nc&p=%&t=${tipo}`)
