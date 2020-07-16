@@ -77,10 +77,11 @@ export class IntinerarioComponent implements OnInit {
 
   //Add ponto no MAPA
   addMarker(dados,opt, txt=''){
+    if (!dados.lat){return false;}
     this.markers.push({
       position: {
         lat: Number(dados.lat)  ,
-        lng: Number(dados.lng) ,
+        lng: Number(dados.lng) ,s
       }, 
       options: opt,
       title: txt,
