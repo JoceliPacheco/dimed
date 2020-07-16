@@ -81,7 +81,7 @@ export class IntinerarioComponent implements OnInit {
     this.markers.push({
       position: {
         lat: Number(dados.lat)  ,
-        lng: Number(dados.lng) ,s
+        lng: Number(dados.lng) ,
       }, 
       options: opt,
       title: txt,
