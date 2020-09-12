@@ -1,0 +1,8 @@
+{
+    "git.autorefresh": false,
+    "git.autoRepositoryDetection": false,
+    "git.confirmEmptyCommits": false,
+    "git.confirmForcePush": false,
+    "git.confirmSync": false,
+    "git.decorations.enabled": false
+}
